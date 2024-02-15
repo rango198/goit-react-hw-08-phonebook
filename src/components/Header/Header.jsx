@@ -10,15 +10,14 @@ function Header() {
   return (
     <header>
       <NavMenu>
-        <LogoHome>
-          <NavLink to={profile ? '/contacts' : '/'}>Home</NavLink>
-        </LogoHome>
+        <LogoHome to={profile ? '/contacts' : '/'}>Home</LogoHome>
+
         <div>
           {profile && <UserMenu name={profile.name} />}
           {!profile && (
             <>
-              <NavLink to="/register">Register</NavLink>
-              <NavLink to="/login">Log In</NavLink>
+              <LogoHome to="/register">Register</LogoHome>
+              <LogoHome to="/login">Log In</LogoHome>
             </>
           )}
         </div>

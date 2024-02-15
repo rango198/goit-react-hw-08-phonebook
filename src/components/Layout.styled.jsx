@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 export const MainContainer = styled.main`
   display: flex;
-  height: 500px;
+  max-height: 500px;
   flex-direction: column;
-  width: 800px;
+  max-width: 800px;
   margin: 25px auto;
   background-color: rgba(157, 144, 168, 0.63);
   align-items: center;
