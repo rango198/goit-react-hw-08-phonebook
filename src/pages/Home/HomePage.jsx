@@ -1,12 +1,11 @@
 import React from 'react';
-import { Container } from 'pages/ContactUser/ContactUser.styled';
-import { Title } from './Homepage.styled';
+import { ContainerHome, Title } from './HomePage.styled';
 
 function Home() {
   return (
-    <Container>
+    <ContainerHome>
       <Title>Task manager welcome page </Title>
-    </Container>
+    </ContainerHome>
   );
 }
 export default Home;

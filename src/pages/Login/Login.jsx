@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import Loader from 'components/Loader/Loader';
 import { loginThunk } from 'components/redux/Auth/auth-thunk';
 import { authSelector } from 'components/redux/Auth/authSelector';
+import { BtnLogin, FormLogin, Input, Label } from './Login.styled';
 
 function Login() {
   const [info, setInfo] = useState({ email: '', password: '' });
@@ -48,9 +49,9 @@ function Login() {
     <>
       {isLoading && <Loader />}
       <h2>You are welcome!</h2>
-      <form onSubmit={submit}>
-        <label htmlFor="email">Email</label>
-        <input
+      <FormLogin onSubmit={submit}>
+        <Label htmlFor="email">Email</Label>
+        <Input
           type="text"
           id="email"
           name="email"
@@ -58,8 +59,8 @@ function Login() {
           value={email}
           onChange={handleChange}
         />
-        <label htmlFor="number">Password</label>
-        <input
+        <Label htmlFor=" password">Password</Label>
+        <Input
           type="password"
           name="password"
           id="password"
@@ -67,8 +68,8 @@ function Login() {
           value={password}
           onChange={handleChange}
         />
-        <button type="submit">Log in</button>
-      </form>
+        <BtnLogin type="submit">Log in</BtnLogin>
+      </FormLogin>
     </>
   );
 }

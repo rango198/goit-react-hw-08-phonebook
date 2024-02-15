@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  min-height: calc(100vh - 50px);
+export const ContainerHome = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  display: flex;
 `;
 
 export const Title = styled.h1`

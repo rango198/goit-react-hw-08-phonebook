@@ -6,6 +6,7 @@ import Loader from 'components/Loader/Loader';
 import { loginThunk } from 'components/redux/Auth/auth-thunk';
 import { signUp } from 'components/fetchAPI';
 import { authSelector } from 'components/redux/Auth/authSelector';
+import { BtnReg, FormReg, InputReg, LabelReg } from './Registarstion.styled';
 
 function Registration() {
   const navigate = useNavigate();
@@ -46,9 +47,9 @@ function Registration() {
     <>
       {isLoading && <Loader />}
       <h2>Nice to meet you!</h2>
-      <form onSubmit={submit}>
-        <label htmlFor="name">Name</label>
-        <input
+      <FormReg onSubmit={submit}>
+        <LabelReg htmlFor="name">Name</LabelReg>
+        <InputReg
           type="text"
           id="name"
           name="name"
@@ -56,8 +57,8 @@ function Registration() {
           value={name}
           onChange={handleChange}
         />
-        <label htmlFor="email">Email</label>
-        <input
+        <LabelReg htmlFor="email">Email</LabelReg>
+        <InputReg
           type="text"
           id="email"
           name="email"
@@ -65,8 +66,8 @@ function Registration() {
           value={email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <LabelReg htmlFor="password">Password</LabelReg>
+        <InputReg
           type="password"
           name="password"
           id="password"
@@ -74,8 +75,8 @@ function Registration() {
           value={password}
           onChange={handleChange}
         />
-        <button type="submit">Log in</button>
-      </form>
+        <BtnReg type="submit">Log in</BtnReg>
+      </FormReg>
     </>
   );
 }
