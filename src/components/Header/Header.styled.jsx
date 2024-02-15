@@ -20,5 +20,6 @@ export const LogoHome = styled(NavLink)`
   :focus,
   :active {
     transform: scale(0.95);
+    background-color: #da4c2c96;
   }
 `;

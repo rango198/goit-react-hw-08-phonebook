@@ -1,6 +1,6 @@
 import { ContactsForm } from 'components/Form/ContactsForm';
 import {
-  BackgroundColor,
+  // BackgroundColor,
   ContactsWrap,
   Container,
   PhoneWrap,
@@ -12,7 +12,7 @@ function ContactUser() {
   return (
     <div>
       <h2>PhoneBook</h2>
-      <BackgroundColor>
+      {/* <BackgroundColor> */}
         <Container>
           <PhoneWrap>
             <h1>Phonebook</h1>
@@ -24,7 +24,7 @@ function ContactUser() {
             <ContactsList />
           </ContactsWrap>
         </Container>
-      </BackgroundColor>
+      {/* </BackgroundColor> */}
     </div>
   );
 }

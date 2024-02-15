@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const FormReg = styled.form`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const BtnReg = styled.button`
@@ -10,16 +11,16 @@ export const BtnReg = styled.button`
   border: none;
   border-radius: 8px;
   color: #fff;
-  background-color: #46adad;
-  margin-top: 30px;
-  padding: 10px 7px;
+  background-color: #dc4a2ab5;
+  margin-top: 50px;
+  padding: 17px 7px;
   font-size: 16px;
 
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 9px 4px rgba(0, 0, 0, 0.2);
   :hover {
     background-color: #999;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 3px 9px 4px rgba(0, 0, 0, 0.2);
   }
 `;
 
