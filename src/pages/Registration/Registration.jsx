@@ -6,7 +6,7 @@ import Loader from 'components/Loader/Loader';
 import { loginThunk } from 'components/redux/Auth/auth-thunk';
 import { signUp } from 'components/fetchAPI';
 import { authSelector } from 'components/redux/Auth/authSelector';
-import { BtnReg, FormReg, InputReg, LabelReg } from './Registarstion.styled';
+import { BtnReg, FormReg, InputReg, LabelReg, TitleReg } from './Registarstion.styled';
 
 function Registration() {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ function Registration() {
   return (
     <>
       {isLoading && <Loader />}
-      <h2>Nice to meet you!</h2>
+      <TitleReg>Nice to meet you!</TitleReg>
       <FormReg onSubmit={submit}>
         <LabelReg htmlFor="name">Name</LabelReg>
         <InputReg

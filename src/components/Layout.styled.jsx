@@ -4,6 +4,7 @@ export const MainContainer = styled.main`
   display: flex;
   height: 500px;
   flex-direction: column;
+  width: 100%;
   max-width: 800px;
   margin: 25px auto;
   background-color: rgba(157, 144, 168, 0.63);

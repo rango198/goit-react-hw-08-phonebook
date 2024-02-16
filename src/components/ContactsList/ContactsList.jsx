@@ -1,5 +1,5 @@
 import { BtnItem, List, ListItem } from './ContactsList.styled';
-
+import { AiOutlineDelete } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
@@ -18,6 +18,7 @@ export const ContactsList = () => {
   const phoneBook = useSelector(selectPhoneBookValue);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  console.log(visibleContacts);
 
   const [selectedContact, setSelectedContact] = useState(null);
 
@@ -41,12 +42,13 @@ export const ContactsList = () => {
       {isLoading && phoneBook?.length === 0 && <Loader />}
       {!error && !isLoading && visibleContacts?.length > 0 && (
         <List>
-          {visibleContacts.map(({ name, phone, id }) => {
+          {visibleContacts.map(({ name, number, id }) => {
             return (
               <ListItem key={id}>
                 <span onClick={() => setModalData(id)}>{name}:</span>
-                <span>{phone}</span>
+                <span>{number}</span>
                 <BtnItem type="button" onClick={() => deleteContact(id)}>
+                  <AiOutlineDelete />
                   Delete
                 </BtnItem>
               </ListItem>

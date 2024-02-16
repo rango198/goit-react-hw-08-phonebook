@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import img from '../../photo/phone-5820436_640.jpg';
 
 const Background = styled.div`
-  /* background-image: url(${img}); */
   background-size: cover;
 
   background-repeat: no-repeat;

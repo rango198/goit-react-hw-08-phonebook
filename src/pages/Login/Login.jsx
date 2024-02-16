@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import Loader from 'components/Loader/Loader';
 import { loginThunk } from 'components/redux/Auth/auth-thunk';
 import { authSelector } from 'components/redux/Auth/authSelector';
-import { BtnLogin, FormLogin, Input, Label } from './Login.styled';
+import { BtnLogin, FormLogin, Input, Label, TitleLogin } from './Login.styled';
 
 function Login() {
   const [info, setInfo] = useState({ email: '', password: '' });
@@ -48,7 +48,7 @@ function Login() {
   return (
     <>
       {isLoading && <Loader />}
-      <h2>You are welcome!</h2>
+      <TitleLogin>You are welcome!</TitleLogin>
       <FormLogin onSubmit={submit}>
         <Label htmlFor="email">Email</Label>
         <Input

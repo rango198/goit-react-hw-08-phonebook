@@ -29,32 +29,46 @@ export const ButtonClose = styled.button`
   position: absolute;
   top: 5%;
   left: 87%;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #db6d69;
-  padding: 5px;
+  border-radius: 3px;
+  color: #ffff;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #dc4a2ab5;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 9px 4px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
   :hover {
-    background-color: #999;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #dc4a2ab5;
+    box-shadow: inset 3px 9px 4px rgba(0, 0, 0, 0.2);
     color: red;
   }
 `;
 
 export const ButtonDelete = styled.button`
-  border-radius: 10px;
   cursor: pointer;
-  background-color: #db6d69;
-  padding: 5px;
+  border: none;
+
+  border-radius: 3px;
+  color: #ffff;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #dc4a2ab5;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  margin-top: 30px;
+  box-shadow: 3px 9px 4px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
   :hover {
-    background-color: #999;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #dc4a2ab5;
+    box-shadow: inset 3px 9px 4px rgba(0, 0, 0, 0.2);
     color: red;
   }
 `;

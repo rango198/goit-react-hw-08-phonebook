@@ -7,6 +7,7 @@ const Background = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  width: 100%;
   height: 700px;
   padding-top: 60px;
 `;

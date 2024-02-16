@@ -44,7 +44,7 @@ export const Modal = ({ data, onClose }) => {
         <IMG src={data.image} alt={data.name} />
         <div>
           <TextName>Name:{data.name}</TextName>
-          <TextPhone>Phone:{data.phone}</TextPhone>
+          <TextPhone>Phone:{data.number}</TextPhone>
           <TextAdderess>Adderess:{data.address}</TextAdderess>
         </div>
       </WrapDiv>

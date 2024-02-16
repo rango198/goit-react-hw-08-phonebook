@@ -8,19 +8,16 @@ export const NavMenu = styled.div`
 
 export const LogoHome = styled(NavLink)`
   display: inline-block;
-  text-decoration: none;
-  padding: 12px;
+  padding-top: 14px;
   color: #d3d2d2;
 
-  font-size: 20px;
-  letter-spacing: 2px;
-  font-weight: bold;
+  font-size: 35px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 
   :hover,
   :focus,
   :active {
     transform: scale(0.95);
-    background-color: #da4c2c96;
+    color: #da4c2c96;
   }
 `;

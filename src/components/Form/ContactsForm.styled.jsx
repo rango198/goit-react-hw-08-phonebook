@@ -15,6 +15,8 @@ export const BtnPhone = styled.button`
   margin-top: 50px;
   padding: 17px 7px;
   font-size: 16px;
+  width: 100%;
+  max-width: 250px;
 
   transition: background-color 0.3s ease;
   box-shadow: 3px 9px 4px rgba(0, 0, 0, 0.2);
@@ -34,7 +36,8 @@ export const FieldInput = styled(Field)`
   margin-top: 8px;
   padding: 15px;
   border-radius: 3.5px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   font-size: 16px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgba(157, 144, 168, 0.63);
