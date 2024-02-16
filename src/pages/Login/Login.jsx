@@ -50,20 +50,22 @@ function Login() {
       {isLoading && <Loader />}
       <TitleLogin>You are welcome!</TitleLogin>
       <FormLogin onSubmit={submit}>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="useremail">Email</Label>
         <Input
+          autoComplete="off"
           type="text"
-          id="email"
+          id="useremail"
           name="email"
           required
           value={email}
           onChange={handleChange}
         />
-        <Label htmlFor=" password">Password</Label>
+        <Label htmlFor="userpassword">Password</Label>
         <Input
+          autoComplete="off"
           type="password"
           name="password"
-          id="password"
+          id="userpassword"
           required
           value={password}
           onChange={handleChange}

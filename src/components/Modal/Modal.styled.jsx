@@ -73,29 +73,29 @@ export const ButtonDelete = styled.button`
   }
 `;
 
-export const TextName = styled.p`
-  font-size: 16px;
-  border: 1px solid #d1cece;
-  padding: 10px;
-  background-color: #d1cece;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-`;
+// export const TextName = styled.p`
+//   font-size: 16px;
+//   border: 1px solid #d1cece;
+//   padding: 10px;
+//   background-color: #d1cece;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+// `;
 
-export const TextPhone = styled.p`
-  font-size: 16px;
-  margin: 20px 0 20px 0;
-  border: 1px solid #d1cece;
-  padding: 10px;
-  background-color: #d1cece;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-`;
-export const TextAdderess = styled.p`
-  font-size: 16px;
-  border: 1px solid #d1cece;
-  padding: 10px;
-  background-color: #d1cece;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-`;
+// export const TextPhone = styled.p`
+//   font-size: 16px;
+//   margin: 20px 0 20px 0;
+//   border: 1px solid #d1cece;
+//   padding: 10px;
+//   background-color: #d1cece;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+// `;
+// export const TextAdderess = styled.p`
+//   font-size: 16px;
+//   border: 1px solid #d1cece;
+//   padding: 10px;
+//   background-color: #d1cece;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+// `;
 
 export const IMG = styled.img`
   width: 180px;

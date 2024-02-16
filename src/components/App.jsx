@@ -14,6 +14,8 @@ import { setToken } from './fetchAPI';
 
 import { useEffect } from 'react';
 import BackgroundHome from './App.styled';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,13 +32,34 @@ export const App = () => {
 
   return (
     <BackgroundHome>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/contacts" element={<ContactUser />} />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Registration />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <ContactUser />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

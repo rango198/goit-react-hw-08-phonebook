@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { delContactThunk, getContactsThunk, postContactThunk } from './options';
+import {
+  delContactThunk,
+  getContactsThunk,
+  postContactThunk,
+  updateContactThunk,
+} from './options';
 
 const contactInitialState = {
   contacts: [],
@@ -17,7 +22,12 @@ const onRejected = (state, { payload }) => {
   state.error = payload;
 };
 
-const arrOfActs = [getContactsThunk, postContactThunk, delContactThunk];
+const arrOfActs = [
+  getContactsThunk,
+  postContactThunk,
+  delContactThunk,
+  updateContactThunk,
+];
 
 const addStatusToActs = status => arrOfActs.map(el => el[status]);
 
@@ -40,6 +50,13 @@ export const phoneBookSlice = createSlice({
         state.isLoading = false;
         state.contacts = state.contacts.filter(
           contact => contact.id !== payload
+        );
+        state.error = null;
+      })
+      .addCase(updateContactThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.contacts = state.contacts.map(contact =>
+          contact.id === payload.id ? payload : contact
         );
         state.error = null;
       })

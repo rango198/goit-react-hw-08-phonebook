@@ -15,11 +15,13 @@ export const Filter = () => {
 
   return (
     <label>
-      <Label>
+      <Label htmlFor="userfilter">
         <IoIosSearch />
         Find contacts by name
       </Label>
       <Input
+        autoComplete="off"
+        id="userfilter"
         type="text"
         name="filter"
         value={filterPhoneBook}

@@ -18,7 +18,6 @@ export const ContactsList = () => {
   const phoneBook = useSelector(selectPhoneBookValue);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  console.log(visibleContacts);
 
   const [selectedContact, setSelectedContact] = useState(null);
 

@@ -31,39 +31,18 @@ export async function getProfile() {
   return data;
 }
 export const getContacts = () => privateInstance.get('/contacts');
-// export async function getContacts() {
-//   return await privateInstance.get(`/contacts`);
-// }
 
 export const addContact = data => {
   return privateInstance.post('/contacts', data);
 };
 
-// export async function addContact(data) {
-//   return await privateInstance.post(`/contacts`, data);
-// }
+export const delContact = id => {
+  return privateInstance.delete(`contacts/${id}`);
+};
 
-export async function delContact(id) {
-  return await privateInstance.delete(`/contacts/${id}`);
-}
-
-// // import axios from 'axios';
-
-// // const contactsInstance = axios.create({
-// //   baseURL: 'https://65c123aedc74300bce8d6244.mockapi.io/api/contacts/contacts',
-// // });
-
-// // export const delContact = id => {
-// //   return contactsInstance.delete(`/${id}`);
-// // };
-
-// export const postContact = data => {
-//   return contactsInstance.post('/', data);
-// };
-
-// export const editContact = data => {
-//   return contactsInstance.put(`/${data.id}`, {
-//     name: data.name,
-//     phone: data.phone,
-//   });
-// };
+export const editContact = contact => {
+  return privateInstance.patch(`/contacts/${contact.id}`, {
+    name: contact.name,
+    number: contact.number,
+  });
+};

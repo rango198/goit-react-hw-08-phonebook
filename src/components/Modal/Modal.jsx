@@ -1,29 +1,32 @@
-import { delContactThunk } from 'components/redux/options';
-import {
-  ButtonClose,
-  ButtonDelete,
-  IMG,
-  ModalContact,
-  TextAdderess,
-  TextName,
-  TextPhone,
-  WrapDiv,
-} from './Modal.styled';
-
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { ModalForm } from 'components/ModalForm/ModalForm';
+import { ButtonClose, IMG, ModalContact, WrapDiv } from './Modal.styled';
+import { toast } from 'react-toastify';
+import { updateContactThunk } from 'components/redux/options';
 
 export const Modal = ({ data, onClose }) => {
+  const { name, number, image } = data;
   const dispatch = useDispatch();
-  const deleteContact = contactId => {
-    dispatch(delContactThunk(contactId));
-    onClose();
-  };
+  console.log(name);
   const closeModal = ({ currentTarget, target, code }) => {
     if (currentTarget === target || code === 'Escape') {
       onClose();
     }
   };
+
+  const handleUpdateContact = values => {
+    try {
+      console.log(values);
+      dispatch(updateContactThunk({ ...data, ...values }));
+      toast.success('Контакт оновлено');
+      onClose();
+    } catch (error) {
+      toast.error('Упс! Сталася помилка під час оновлення');
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -41,16 +44,17 @@ export const Modal = ({ data, onClose }) => {
         Close
       </ButtonClose>
       <WrapDiv>
-        <IMG src={data.image} alt={data.name} />
+        <IMG src={image} alt={name} />
         <div>
-          <TextName>Name:{data.name}</TextName>
-          <TextPhone>Phone:{data.number}</TextPhone>
-          <TextAdderess>Adderess:{data.address}</TextAdderess>
+          <ModalForm
+            initialValues={{
+              name: name,
+              number: number,
+            }}
+            onSubmit={handleUpdateContact}
+          />
         </div>
       </WrapDiv>
-      <ButtonDelete type="button" onClick={() => deleteContact(data.id)}>
-        Delete
-      </ButtonDelete>
     </ModalContact>
   );
 };

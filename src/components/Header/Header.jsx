@@ -18,8 +18,9 @@ function Header() {
           {profile && <UserMenu name={profile.name} />}
           {!profile && (
             <>
-              <LogoHome to="/register">Register</LogoHome>
-              <LogoHome to="/login">Log In</LogoHome>
+              <LogoHome to="/register">SignUp</LogoHome>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <LogoHome to="/login">LogIn</LogoHome>
             </>
           )}
         </div>
