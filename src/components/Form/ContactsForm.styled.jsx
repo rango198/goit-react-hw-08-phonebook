@@ -11,31 +11,33 @@ export const BtnPhone = styled.button`
   border: none;
   border-radius: 8px;
   color: #fff;
-  background-color: #46adad;
-  margin-top: 30px;
-  padding: 10px 7px;
+  background-color: #dc4a2ab5;
+  margin-top: 50px;
+  padding: 17px 7px;
   font-size: 16px;
 
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
+  box-shadow: 3px 9px 4px rgba(0, 0, 0, 0.2);
   :hover {
     background-color: #999;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 3px 9px 4px rgba(0, 0, 0, 0.2);
   }
 `;
 
 export const Label = styled.label`
   display: flex;
-  margin: 10px 0 5px 0;
+  margin: 15px 0 5px 0;
 `;
 
 export const FieldInput = styled(Field)`
   border: none;
+  margin-top: 8px;
   padding: 15px;
   border-radius: 3.5px;
   width: 250px;
   font-size: 16px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgba(157, 144, 168, 0.63);
 `;
 export const ErrorText = styled.p`
   color: #af0f0f;

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const NavMenu = styled.div`
   display: flex;
+  justify-content: space-around;
 `;
 
 export const LogoHome = styled(NavLink)`

@@ -8,7 +8,7 @@ export const getContactsThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await getContacts();
-
+      console.log(data);
       return data;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(
@@ -22,8 +22,9 @@ export const postContactThunk = createAsyncThunk(
   'phoneBook/postContact',
   async (data, { rejectWithValue }) => {
     try {
+      console.log(data);
       const { data: result } = await addContact(data);
-
+      console.log(data);
       toast.success('Add contact', {
         position: 'bottom-right',
       });
@@ -33,16 +34,16 @@ export const postContactThunk = createAsyncThunk(
     }
   },
   {
-    condition: ({ name, phone }, { getState }) => {
-      console.log(name, phone);
+    condition: ({ name, number }, { getState }) => {
+      console.log(name, number);
       const { phoneBook } = getState();
 
       const normalizedName = name.toLowerCase();
-      const normalizedPhone = phone.trim();
+      const normalizedPhone = number.trim();
 
       const dublicate = phoneBook.contacts.find(contact => {
         const normalizedCurrentName = contact.name.toLowerCase();
-        const normalizedCurrentPhone = contact.phone.trim();
+        const normalizedCurrentPhone = contact.number.trim();
         return (
           normalizedCurrentName === normalizedName &&
           normalizedCurrentPhone === normalizedPhone

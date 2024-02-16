@@ -4,6 +4,7 @@ export const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  align-items: center;
 `;
 
 export const BtnLogin = styled.button`

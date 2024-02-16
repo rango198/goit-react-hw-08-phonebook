@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import img from '../photo/cup-of-coffee-1280537_1920.jpg';
 
 const Background = styled.div`
-  background-image: url('https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537_1280.jpg');
+  background-image: url(${img});
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -15,6 +16,3 @@ const BackgroundHome = ({ children }) => {
 };
 
 export default BackgroundHome;
-// ('https://pixabay.com/get/g537b682e99bc32abed2914efd37f0220013f7effbafc53adcc7f7c65980050590cbdd6a6c2d4b0ee9c1f431dd1168b1aaef5986d2ba92bca393031d5903785df_1280.jpg');
-
-// https://cdn.pixabay.com/photo/2017/07/31/11/04/wood-2557258_1280.jpg

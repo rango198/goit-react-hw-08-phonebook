@@ -1,10 +1,10 @@
 import { BtnItem, List, ListItem } from './ContactsList.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Modal } from 'components/Modal/Modal';
-import { delContactThunk, getContactsThunk } from 'components/redux/options';
+import { delContactThunk } from 'components/redux/options';
 import {
   selectError,
   selectFilteredContacts,
@@ -22,10 +22,6 @@ export const ContactsList = () => {
   const [selectedContact, setSelectedContact] = useState(null);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getContactsThunk());
-  }, [dispatch]);
 
   const deleteContact = contactId => {
     dispatch(delContactThunk(contactId));

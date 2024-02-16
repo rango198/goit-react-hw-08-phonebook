@@ -1,17 +1,20 @@
 import { ContactsForm } from 'components/Form/ContactsForm';
-import {
-  // BackgroundColor,
-  ContactsWrap,
-  Container,
-  PhoneWrap,
-} from './ContactUser.styled';
+import { ContactsWrap, Container, PhoneWrap } from './ContactUser.styled';
 import { Filter } from 'components/filter/filter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
+import { useDispatch } from 'react-redux';
+import { getContactsThunk } from 'components/redux/options';
+import { useEffect } from 'react';
 
 function ContactUser() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getContactsThunk());
+  }, [dispatch]);
+
   return (
     <div>
-      {/* <BackgroundColor> */}
       <Container>
         <PhoneWrap>
           <h1>Phonebook</h1>
@@ -23,7 +26,6 @@ function ContactUser() {
           <ContactsList />
         </ContactsWrap>
       </Container>
-      {/* </BackgroundColor> */}
     </div>
   );
 }

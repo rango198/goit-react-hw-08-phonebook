@@ -4,6 +4,7 @@ export const FormReg = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  align-items: center;
 `;
 
 export const BtnReg = styled.button`

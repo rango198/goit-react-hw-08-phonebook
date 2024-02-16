@@ -1,5 +1,5 @@
 import { IoIosSearch } from 'react-icons/io';
-import { Input } from './Filter.styled';
+import { Input, Label } from './Filter.styled';
 import { filterSet } from 'components/redux/filter-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from 'components/redux/selects';
@@ -15,10 +15,10 @@ export const Filter = () => {
 
   return (
     <label>
-      <div>
+      <Label>
         <IoIosSearch />
         Find contacts by name
-      </div>
+      </Label>
       <Input
         type="text"
         name="filter"

@@ -17,7 +17,7 @@ import { postContactThunk } from 'components/redux/options';
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const FormError = ({ name }) => {
@@ -36,7 +36,7 @@ const schema = Yup.object().shape({
       'the name is not entered correctly'
     )
     .required(),
-  phone: Yup.string()
+  number: Yup.string()
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
       'the number is not entered correctly, parentheses and can start with +'
@@ -74,8 +74,8 @@ export const ContactsForm = () => {
               <FaPhoneAlt /> Phone
             </div>
           </Label>
-          <FieldInput name="phone" type="tel" />
-          <FormError name="phone" component="span" />
+          <FieldInput name="number" type="tel" />
+          <FormError name="number" component="span" />
 
           <BtnPhone type="submit">
             Add contact <AiOutlineUserAdd />
