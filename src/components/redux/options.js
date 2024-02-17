@@ -5,8 +5,7 @@ import {
   editContact,
   getContacts,
 } from 'components/fetchAPI';
-
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 export const getContactsThunk = createAsyncThunk(
   'phoneBook/getContacts',
@@ -27,9 +26,8 @@ export const postContactThunk = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const { data: result } = await addContact(data);
-
       toast.success('Add contact', {
-        position: 'bottom-right',
+        duration: 3000,
       });
       return result;
     } catch ({ response }) {
@@ -38,7 +36,6 @@ export const postContactThunk = createAsyncThunk(
   },
   {
     condition: ({ name, number }, { getState }) => {
-      console.log(name, number);
       const { phoneBook } = getState();
 
       const normalizedName = name.toLowerCase();
@@ -66,8 +63,8 @@ export const delContactThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await delContact(id);
-      toast.success('Contact delete', {
-        position: 'bottom-right',
+      toast.success('Contact Delete', {
+        duration: 3000,
       });
       return id;
     } catch ({ response }) {
@@ -80,13 +77,12 @@ export const updateContactThunk = createAsyncThunk(
   'contacts/editContact',
   async (data, { rejectWithValue }) => {
     try {
-      console.log(data);
       const { data: result } = await editContact(data);
-      console.log(data);
-      toast.success('Contact update', {
-        position: 'bottom-right',
+
+      toast.success('Contact Edit', {
+        duration: 3000,
       });
-      console.log(result);
+
       return result;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);

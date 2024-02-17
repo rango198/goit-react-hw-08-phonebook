@@ -34,7 +34,7 @@ function Login() {
           email: '',
           password: '',
         });
-        toast.success('We are glad to see you again!', {
+        toast.success('Welcome', {
           duration: 4000,
         });
       })
@@ -48,7 +48,7 @@ function Login() {
   return (
     <>
       {isLoading && <Loader />}
-      <TitleLogin>You are welcome!</TitleLogin>
+      <TitleLogin>Welcome!</TitleLogin>
       <FormLogin onSubmit={submit}>
         <Label htmlFor="useremail">Email</Label>
         <Input

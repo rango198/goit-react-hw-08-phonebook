@@ -46,7 +46,12 @@ export const ContactsList = () => {
               <ListItem key={id}>
                 <span onClick={() => setModalData(id)}>{name}:</span>
                 <span>{number}</span>
-                <BtnItem type="button" onClick={() => deleteContact(id)}>
+                <BtnItem
+                  type="button"
+                  onClick={() => deleteContact(id)}
+                  disabled={isLoading}
+                >
+                  {isLoading && <Loader size={12} />}
                   <AiOutlineDelete />
                   Delete
                 </BtnItem>

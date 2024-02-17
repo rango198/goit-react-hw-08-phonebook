@@ -38,10 +38,10 @@ function Registration() {
         dispatch(loginThunk({ email, password }))
           .then(() => {
             navigate('/contacts');
-            toast.success('Registration successfuly', { duration: 3000 });
+            toast.success('SignUp successfuly', { duration: 3000 });
           })
           .catch(() => {
-            toast.error('Failed to log in', { duration: 3000 });
+            toast.error('Failed to login', { duration: 3000 });
           });
       })
       .catch(() => {
