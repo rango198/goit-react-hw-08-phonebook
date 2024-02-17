@@ -1,7 +1,7 @@
 import Loader from 'components/Loader/Loader';
 import { delContactThunk } from 'components/redux/options';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { Modal } from 'components/Modal/Modal';
 import { BtnItem, ListItem } from 'components/ContactsList/ContactsList.styled';
