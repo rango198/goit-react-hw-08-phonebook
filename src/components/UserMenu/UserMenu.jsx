@@ -5,6 +5,7 @@ import { logOut } from 'components/redux/Auth/authSlice';
 import { delToken } from 'components/fetchAPI';
 import { MenuUser, MenyBtn, UserName } from './UserMenu.styled';
 import { ImExit } from 'react-icons/im';
+import { RxAvatar } from 'react-icons/rx';
 
 const UserMenu = ({ name }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ const UserMenu = ({ name }) => {
 
   return (
     <MenuUser>
-      <UserName>{name}</UserName>
+      <UserName>
+        <RxAvatar />
+        {name}
+      </UserName>
       <MenyBtn onClick={onClick}>
         <ImExit />
         Logout

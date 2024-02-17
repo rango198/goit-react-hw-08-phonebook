@@ -34,10 +34,14 @@ export const MenyBtn = styled.button`
 export const UserName = styled.p`
   font-size: 20px;
   line-height: 1.5;
-
   margin-right: 14px;
   letter-spacing: 1px;
   color: #2de075a2;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 `;
