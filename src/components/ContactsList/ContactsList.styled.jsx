@@ -36,7 +36,7 @@ export const BtnItem = styled.button`
 
 export const ListItem = styled.li`
   display: flex;
-  gap: 23px;
+  gap: 10px;
   cursor: pointer;
   font-size: 20px;
   line-height: 1.5;
