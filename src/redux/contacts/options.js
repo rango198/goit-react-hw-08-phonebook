@@ -5,7 +5,7 @@ import {
   editContact,
   getAllContacts,
 } from '../Api/fetchAPI';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 export const getContactsThunk = createAsyncThunk(
   'phoneBook/getContacts',

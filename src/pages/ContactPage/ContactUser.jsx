@@ -5,18 +5,17 @@ import { ContactsList } from 'components/ContactsList/ContactsList';
 import { useDispatch } from 'react-redux';
 import { getContactsThunk } from '../../redux/contacts/options';
 import { useEffect } from 'react';
-import { setAuthHeader } from '../../redux/Api/fetchAPI';
-
 import { useAuth } from 'hook/useAuthSelector';
 
 function ContactUser() {
   const dispatch = useDispatch();
-  const { token } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
-    setAuthHeader(token);
-    dispatch(getContactsThunk());
-  }, [dispatch, token]);
+    if (user.email) {
+      dispatch(getContactsThunk());
+    }
+  }, [dispatch, user.email]);
 
   return (
     <div>

@@ -23,7 +23,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-    // dispatch(getContactsThunk());
   }, [dispatch]);
 
   return (

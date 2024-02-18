@@ -58,7 +58,6 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
-    // const { pending, fulfilled, rejected } = status;
     builder
       .addCase(registerUser.pending, handlePending)
       .addCase(registerUser.fulfilled, handleFulfilledRegisterUser)
