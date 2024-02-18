@@ -13,7 +13,6 @@ import { useEffect } from 'react';
 import { getCurrentUser } from '../redux/auth/auth-operation';
 import Loader from './Loader/Loader';
 import { useAuth } from 'hook/useAuthSelector';
-import ContactPage from 'pages/ContactPage/ContactUser';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 

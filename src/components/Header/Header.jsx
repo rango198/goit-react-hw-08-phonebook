@@ -10,7 +10,6 @@ function Header() {
       <NavMenu>
         <LogoHome to="/">
           <FaHome />
-          {isLoggedIn && <LogoHome to="/contacts">Contacts</LogoHome>}
         </LogoHome>
 
         <div>
