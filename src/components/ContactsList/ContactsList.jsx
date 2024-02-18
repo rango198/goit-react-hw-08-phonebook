@@ -1,5 +1,5 @@
 import { List } from './ContactsList.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
   selectFilteredContacts,
@@ -8,19 +8,19 @@ import {
 } from '../../redux/selects';
 import Loader from 'components/Loader/Loader';
 import { ListItemContact } from 'components/ContactItem/ContactItem';
-// import { useEffect } from 'react';
-// import { getContactsThunk } from '../../redux/contacts/options';
+import { useEffect } from 'react';
+import { getContactsThunk } from '../../redux/contacts/options';
 
 export const ContactsList = () => {
   const visibleContacts = useSelector(selectFilteredContacts);
   const phoneBook = useSelector(selectPhoneBookValue);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getContactsThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getContactsThunk());
+  }, [dispatch]);
   return (
     <>
       {isLoading && phoneBook?.length === 0 && <Loader />}
