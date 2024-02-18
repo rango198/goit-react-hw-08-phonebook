@@ -15,7 +15,7 @@ import Loader from './Loader/Loader';
 import { useAuth } from 'hook/useAuthSelector';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import { getContactsThunk } from '../redux/contacts/options';
+// import { getContactsThunk } from '../redux/contacts/options';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,13 +23,14 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-    dispatch(getContactsThunk());
+    // dispatch(getContactsThunk());
   }, [dispatch]);
 
   return (
     <BackgroundHome>
-      {isRefreshing && <Loader />}
-      {!isRefreshing && (
+      {isRefreshing ? (
+        <Loader />
+      ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -45,7 +46,6 @@ export const App = () => {
           </Route>
         </Routes>
       )}
-
       <Toaster />
     </BackgroundHome>
   );

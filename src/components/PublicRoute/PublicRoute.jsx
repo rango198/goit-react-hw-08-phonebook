@@ -5,7 +5,7 @@ const PublicRoute = () => {
   const { isLoggedIn } = useAuth();
   const { token } = useAuth();
 
-  if (isLoggedIn && !token) {
+  if (!isLoggedIn && token) {
     return <p>...Loading</p>;
   }
 
