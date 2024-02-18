@@ -1,22 +1,24 @@
-import { useSelector } from 'react-redux';
 import UserMenu from 'components/UserMenu/UserMenu';
-import { authSelector } from 'components/redux/Auth/authSelector';
 import { LogoHome, NavMenu } from './Header.styled';
 import { FaHome } from 'react-icons/fa';
+import { useAuth } from 'hook/useAuthSelector';
 
 function Header() {
-  const { profile } = useSelector(authSelector);
-
+  const { isLoggedIn } = useAuth();
   return (
     <header>
       <NavMenu>
-        <LogoHome to={profile ? '/contacts' : '/'}>
+        <LogoHome to="/">
           <FaHome />
+          {isLoggedIn && <LogoHome to="/contacts">Contacts</LogoHome>}
         </LogoHome>
 
         <div>
-          {profile && <UserMenu name={profile.name} />}
-          {!profile && (
+          {isLoggedIn ? (
+            <>
+              <UserMenu />
+            </>
+          ) : (
             <>
               <LogoHome to="/register">SignUp</LogoHome>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>

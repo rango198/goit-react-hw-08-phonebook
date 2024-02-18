@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { phoneBookSlice } from './contacts-slice';
+import { phoneBookSlice } from './contacts/contacts-slice';
 import { filterSlice } from './filter-slice';
-import { authReducer } from './Auth/authSlice';
+
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
+
 import {
   persistStore,
   FLUSH,
@@ -13,6 +14,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { authReducer } from './auth/auth-slice';
 
 const persistConfig = {
   key: 'token',

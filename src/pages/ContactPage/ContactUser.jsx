@@ -1,18 +1,9 @@
 import { ContactsForm } from 'components/Form/ContactsForm';
-import { ContactsWrap, Container, PhoneWrap } from './ContactUser.styled';
+import { ContactsWrap, Container, PhoneWrap } from './ContactPage.styled';
 import { Filter } from 'components/filter/filter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
-import { useDispatch } from 'react-redux';
-import { getContactsThunk } from 'components/redux/options';
-import { useEffect } from 'react';
 
 function ContactUser() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getContactsThunk());
-  }, [dispatch]);
-
   return (
     <div>
       <Container>

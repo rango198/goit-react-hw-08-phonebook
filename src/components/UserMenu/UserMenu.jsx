@@ -1,19 +1,20 @@
 import { useDispatch } from 'react-redux';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logOut } from 'components/redux/Auth/authSlice';
-import { delToken } from 'components/fetchAPI';
 import { MenuUser, MenyBtn, UserName } from './UserMenu.styled';
 import { ImExit } from 'react-icons/im';
 import { RxAvatar } from 'react-icons/rx';
+import { useAuth } from 'hook/useAuthSelector';
+import { logOutUser } from '../../redux/auth/auth-operation';
 
-const UserMenu = ({ name }) => {
-  const dispatch = useDispatch();
+const UserMenu = () => {
   const navigate = useNavigate();
 
-  const onClick = () => {
-    dispatch(logOut());
-    delToken();
+  const dispatch = useDispatch();
+  const { user } = useAuth();
+
+  const handleLogOut = () => {
+    dispatch(logOutUser());
     navigate('/');
   };
 
@@ -21,9 +22,9 @@ const UserMenu = ({ name }) => {
     <MenuUser>
       <UserName>
         <RxAvatar />
-        {name}
+        {user.name}
       </UserName>
-      <MenyBtn onClick={onClick}>
+      <MenyBtn onClick={handleLogOut}>
         <ImExit />
         Logout
       </MenyBtn>

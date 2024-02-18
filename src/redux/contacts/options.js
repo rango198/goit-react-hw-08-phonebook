@@ -3,15 +3,15 @@ import {
   addContact,
   delContact,
   editContact,
-  getContacts,
-} from 'components/fetchAPI';
+  getAllContacts,
+} from '../Api/fetchAPI';
 import { toast } from 'react-hot-toast';
 
 export const getContactsThunk = createAsyncThunk(
   'phoneBook/getContacts',
   async (_, thunkAPI) => {
     try {
-      const { data } = await getContacts();
+      const { data } = await getAllContacts();
       return data;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(

@@ -1,68 +1,51 @@
-import ContactUser from 'pages/ContactUser/ContactUser';
+import ContactUser from 'pages/ContactPage/ContactUser';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
-
+import BackgroundHome from './App.styled';
 import Login from 'pages/Login/Login';
 import Registration from 'pages/Registration/Registration';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import Layout from './Layout';
 import Home from 'pages/Home/HomePage';
-import { useDispatch, useSelector } from 'react-redux';
-import { authSelector } from './redux/Auth/authSelector';
-import { getProfileThunk } from './redux/Auth/auth-thunk';
-import { setToken } from './fetchAPI';
+import { useDispatch } from 'react-redux';
 
 import { useEffect } from 'react';
-import BackgroundHome from './App.styled';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
+import { getCurrentUser } from '../redux/auth/auth-operation';
+import Loader from './Loader/Loader';
+import { useAuth } from 'hook/useAuthSelector';
+import ContactPage from 'pages/ContactPage/ContactUser';
 import PublicRoute from './PublicRoute/PublicRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { token, isLoad } = useSelector(authSelector);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    if (isLoad) {
-      setToken(token);
-      dispatch(getProfileThunk());
-    } else {
-      return;
-    }
-  }, [token, isLoad, dispatch]);
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   return (
     <BackgroundHome>
+      {isRefreshing && <Loader />}
+      {!isRefreshing && (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route element={<PublicRoute />}>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Registration />} />
+            </Route>
+
+            <Route element={<PrivateRoute />}>
+              <Route path="/contacts" element={<ContactUser />} />
+            </Route>
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
+      )}
+
       <Toaster />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <Registration />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute>
-                <ContactUser />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
     </BackgroundHome>
   );
 };

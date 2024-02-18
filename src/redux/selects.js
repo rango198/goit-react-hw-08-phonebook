@@ -1,5 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 
+// auth
+export const selectToken = ({ auth }) => auth.token;
+export const selectIsLogin = ({ auth }) => auth.isLoggedIn;
+export const selectUser = ({ auth }) => auth.user;
+export const selectIsRefreshing = ({ auth }) => auth.isRefreshing;
+
+//contacts
 export const selectIsLoading = ({ phoneBook }) => phoneBook.isLoading;
 export const selectError = ({ phoneBook }) => phoneBook.error;
 export const selectFilter = ({ filter }) => filter;

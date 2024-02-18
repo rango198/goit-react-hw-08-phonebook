@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import Loader from 'components/Loader/Loader';
-import { loginThunk } from 'components/redux/Auth/auth-thunk';
-import { signUp } from 'components/fetchAPI';
-import { authSelector } from 'components/redux/Auth/authSelector';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../redux/auth/auth-operation';
 import {
   BtnReg,
   FormReg,
@@ -17,43 +13,41 @@ import {
 function Registration() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [query, setQuery] = useState({ name: false, email: false });
+  const [passwordValid, setPasswordValid] = useState({ password: false });
 
-  const [info, setInfo] = useState({ name: '', email: '', password: '' });
-  const { name, email, password } = info;
-  const { isLoading } = useSelector(authSelector);
-
-  const handleChange = ({ target }) => {
-    setInfo({
-      ...info,
-      [target.name]: target.value,
-    });
-  };
-
-  const submit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (password.length < 8)
-      return toast.error('Password shougth de longer 8 symbols ');
-    signUp(info)
-      .then(() => {
-        dispatch(loginThunk({ email, password }))
-          .then(() => {
-            navigate('/contacts');
-            toast.success('SignUp successfuly', { duration: 3000 });
-          })
-          .catch(() => {
-            toast.error('Failed to login', { duration: 3000 });
-          });
-      })
-      .catch(() => {
-        toast.error('Incorrect input data', { duration: 3000 });
-      });
+    const data = new FormData(e.currentTarget);
+
+    const user = {
+      name: data.get('name'),
+      email: data.get('email'),
+      password: data.get('password'),
+    };
+
+    if (user.name === '') {
+      setQuery(prev => ({ ...prev, name: true }));
+      return;
+    }
+    if (user.email === '') {
+      setQuery(prev => ({ ...prev, email: true }));
+      return;
+    }
+
+    if (user.password.length < 7 && user.password === '') {
+      setPasswordValid(prev => ({ ...prev, password: true }));
+      return;
+    }
+    console.log('form reg user: ', user);
+    dispatch(registerUser(user));
+    navigate('/login');
   };
 
   return (
     <>
-      {isLoading && <Loader />}
-      <TitleReg>Nice to meet you!</TitleReg>
-      <FormReg onSubmit={submit}>
+      <TitleReg>Wecome to form signUp!</TitleReg>
+      <FormReg onSubmit={handleSubmit}>
         <LabelReg htmlFor="username">Name</LabelReg>
         <InputReg
           autoComplete="off"
@@ -61,8 +55,8 @@ function Registration() {
           id="username"
           name="name"
           required
-          value={name}
-          onChange={handleChange}
+
+          // onChange={handleChange}
         />
         <LabelReg htmlFor="useremail">Email</LabelReg>
         <InputReg
@@ -71,8 +65,9 @@ function Registration() {
           id="useremail"
           name="email"
           required
-          value={email}
-          onChange={handleChange}
+          error={query.email}
+
+          // onChange={handleChange}
         />
         <LabelReg htmlFor="userpassword">Password</LabelReg>
         <InputReg
@@ -81,8 +76,9 @@ function Registration() {
           name="password"
           id="userpassword"
           required
-          value={password}
-          onChange={handleChange}
+          error={passwordValid.length < 7}
+
+          // onChange={handleChange}
         />
         <BtnReg type="submit">Log in</BtnReg>
       </FormReg>

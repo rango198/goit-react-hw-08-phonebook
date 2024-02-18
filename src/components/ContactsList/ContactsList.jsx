@@ -5,7 +5,7 @@ import {
   selectFilteredContacts,
   selectIsLoading,
   selectPhoneBookValue,
-} from 'components/redux/selects';
+} from '../../redux/selects';
 import Loader from 'components/Loader/Loader';
 import { ListItemContact } from 'components/ContactItem/ContactItem';
 

@@ -1,8 +1,9 @@
 import { IoIosSearch } from 'react-icons/io';
 import { Input, Label } from './Filter.styled';
-import { filterSet } from 'components/redux/filter-slice';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from 'components/redux/selects';
+import { selectFilter } from '../../redux/selects';
+import { filterSet } from '../../redux/filter-slice';
 
 export const Filter = () => {
   const dispatch = useDispatch();

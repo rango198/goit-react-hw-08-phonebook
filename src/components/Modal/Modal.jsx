@@ -3,12 +3,11 @@ import { useEffect } from 'react';
 import { ModalForm } from 'components/ModalForm/ModalForm';
 import { ButtonClose, IMG, ModalContact, WrapDiv } from './Modal.styled';
 import { toast } from 'react-toastify';
-import { updateContactThunk } from 'components/redux/options';
+import { updateContactThunk } from '../../redux/contacts/options';
 
 export const Modal = ({ data, onClose }) => {
   const { name, number, image } = data;
   const dispatch = useDispatch();
-  console.log(name);
   const closeModal = ({ currentTarget, target, code }) => {
     if (currentTarget === target || code === 'Escape') {
       onClose();
@@ -17,7 +16,6 @@ export const Modal = ({ data, onClose }) => {
 
   const handleUpdateContact = values => {
     try {
-      console.log(values);
       dispatch(updateContactThunk({ ...data, ...values }));
       toast.success('Контакт оновлено');
       onClose();

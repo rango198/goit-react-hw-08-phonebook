@@ -1,5 +1,5 @@
 import Loader from 'components/Loader/Loader';
-import { delContactThunk } from 'components/redux/options';
+import { delContactThunk } from '../../redux/contacts/options';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AiOutlineDelete } from 'react-icons/ai';

@@ -13,7 +13,7 @@ import {
 } from './ContactsForm.styled';
 
 import { useDispatch } from 'react-redux';
-import { postContactThunk } from 'components/redux/options';
+import { postContactThunk } from '../../redux/contacts/options';
 
 const initialValues = {
   name: '',

@@ -1,11 +1,19 @@
-import { useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../../hook/useAuthSelector';
 
-const PrivateRoute = ({ children }) => {
-  const {isLoad} = useSelector(state => state.auth);
-  const location = useLocation();
+const PrivateRoute = () => {
+  const { isLoggedIn } = useAuth();
+  const { token } = useAuth();
 
-  return isLoad ? children : <Navigate to={'/login'} state={location} />;
+  if (!isLoggedIn && token) {
+    return <p>...Loading</p>;
+  }
+
+  if (!isLoggedIn && !token) {
+    return <Navigate to="/login" />;
+  }
+
+  return <Outlet />;
 };
 
 export default PrivateRoute;

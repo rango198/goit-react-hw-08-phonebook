@@ -1,55 +1,40 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import Loader from 'components/Loader/Loader';
-import { loginThunk } from 'components/redux/Auth/auth-thunk';
-import { authSelector } from 'components/redux/Auth/authSelector';
+import { useDispatch } from 'react-redux';
 import { BtnLogin, FormLogin, Input, Label, TitleLogin } from './Login.styled';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { logInUser } from '../../redux/auth/auth-operation';
 
 function Login() {
-  const [info, setInfo] = useState({ email: '', password: '' });
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [query, setQuery] = useState({ email: false, password: false });
 
-  const { email, password } = info;
-
-  const { isLoading } = useSelector(authSelector);
-
-  const handleChange = ({ target }) => {
-    setInfo({
-      ...info,
-      [target.name]: target.value,
-    });
-  };
-
-  const submit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    dispatch(loginThunk(info))
-      .unwrap()
-      .then(() => {
-        navigate('/contacts');
-        setInfo({
-          email: '',
-          password: '',
-        });
-        toast.success('Welcome', {
-          duration: 4000,
-        });
-      })
-      .catch(() =>
-        toast.error('Incorrect email address or password', {
-          duration: 4000,
-        })
-      );
+    const data = new FormData(e.currentTarget);
+
+    const user = {
+      email: data.get('email'),
+      password: data.get('password'),
+    };
+
+    if (user.email === '') {
+      setQuery(prev => ({ ...prev, email: true }));
+      return;
+    }
+    if (user.password === '') {
+      setQuery(prev => ({ ...prev, password: true }));
+      return;
+    }
+
+    dispatch(logInUser(user));
+    navigate('/contacts');
   };
 
   return (
     <>
-      {isLoading && <Loader />}
       <TitleLogin>Welcome!</TitleLogin>
-      <FormLogin onSubmit={submit}>
+      <FormLogin onSubmit={handleSubmit}>
         <Label htmlFor="useremail">Email</Label>
         <Input
           autoComplete="off"
@@ -57,8 +42,7 @@ function Login() {
           id="useremail"
           name="email"
           required
-          value={email}
-          onChange={handleChange}
+          error={query.email}
         />
         <Label htmlFor="userpassword">Password</Label>
         <Input
@@ -67,8 +51,7 @@ function Login() {
           name="password"
           id="userpassword"
           required
-          value={password}
-          onChange={handleChange}
+          error={query.password}
         />
         <BtnLogin type="submit">Log in</BtnLogin>
       </FormLogin>
