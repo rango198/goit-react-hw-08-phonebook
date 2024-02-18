@@ -8,10 +8,12 @@ function Header() {
   return (
     <header>
       <NavMenu>
-        <LogoHome to="/">
-          <FaHome />
-        </LogoHome>
-
+        <div>
+          <LogoHome to="/">
+            <FaHome />
+          </LogoHome>
+          {isLoggedIn && <LogoHome to="/contacts">Contacts</LogoHome>}
+        </div>
         <div>
           {isLoggedIn ? (
             <>
