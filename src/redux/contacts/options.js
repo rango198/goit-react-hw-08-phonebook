@@ -4,6 +4,7 @@ import {
   delContact,
   editContact,
   getAllContacts,
+  setAuthHeader,
 } from '../Api/fetchAPI';
 import { toast } from 'react-toastify';
 
@@ -11,15 +12,32 @@ export const getContactsThunk = createAsyncThunk(
   'phoneBook/getContacts',
   async (_, thunkAPI) => {
     try {
+      const token = thunkAPI.getState().auth.token;
+      setAuthHeader(token);
+      console.log(token);
       const { data } = await getAllContacts();
       return data;
-    } catch ({ response }) {
+    } catch (error) {
       return thunkAPI.rejectWithValue(
-        `Ooops! Wrong... Try again or update browser`
+        error.message || 'Ooops! Something went wrong...'
       );
     }
   }
 );
+
+// export const getContactsThunk = createAsyncThunk(
+//   'phoneBook/getContacts',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await getAllContacts();
+//       return data;
+//     } catch ({ response }) {
+//       return thunkAPI.rejectWithValue(
+//         `Ooops! Wrong... Try again or update browser`
+//       );
+//     }
+//   }
+// );
 
 export const postContactThunk = createAsyncThunk(
   'phoneBook/postContact',

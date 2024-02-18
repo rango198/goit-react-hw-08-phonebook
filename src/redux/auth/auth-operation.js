@@ -66,7 +66,7 @@ export const getCurrentUser = createAsyncThunk(
         auth: { token },
       } = getState();
       const { data } = await userCurrent(token);
-      //console.log('currentUser:', data);
+      console.log('currentUser:', data);
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);

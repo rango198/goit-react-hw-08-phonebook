@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { ModalForm } from 'components/ModalForm/ModalForm';
 import { ButtonClose, IMG, ModalContact, WrapDiv } from './Modal.styled';
 import { toast } from 'react-toastify';
@@ -25,17 +25,17 @@ export const Modal = ({ data, onClose }) => {
     }
   };
 
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.code === 'Escape') {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
+  // useEffect(() => {
+  //   const handleKeyDown = event => {
+  //     if (event.code === 'Escape') {
+  //       onClose();
+  //     }
+  //   };
+  //   document.addEventListener('keydown', handleKeyDown);
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyDown);
+  //   };
+  // }, [onClose]);
   return (
     <ModalContact onClick={closeModal}>
       <ButtonClose type="button" onClick={onClose}>
