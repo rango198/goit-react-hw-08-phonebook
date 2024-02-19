@@ -4,8 +4,10 @@ import { useAuth } from '../../hook/useAuthSelector';
 const PrivateRoute = () => {
   const { isLoggedIn } = useAuth();
   const { token } = useAuth();
+  console.log(token);
+  console.log(isLoggedIn);
 
-  if (!isLoggedIn && token) {
+  if (isLoggedIn && !token) {
     return <p>...Loading</p>;
   }
 

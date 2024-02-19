@@ -1,4 +1,4 @@
-import ContactUser from 'pages/ContactPage/ContactUser';
+import ContactUser from 'pages/ContactPage/ContactPage';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import BackgroundHome from './App.styled';
@@ -16,8 +16,6 @@ import { useAuth } from 'hook/useAuthSelector';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
-import { getContactsThunk } from '../redux/contacts/options';
-
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -26,36 +24,29 @@ export const App = () => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
-  const { user } = useAuth();
-
-  useEffect(() => {
-    if (user.email) {
-      dispatch(getContactsThunk());
-      console.log(user.email);
-    }
-  }, [dispatch, user.email]);
-
   return (
-    <BackgroundHome>
+    <>
       {isRefreshing ? (
         <Loader />
       ) : (
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route element={<PublicRoute />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Registration />} />
-            </Route>
+        <BackgroundHome>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route element={<PublicRoute />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Registration />} />
+              </Route>
 
-            <Route element={<PrivateRoute />}>
-              <Route path="/contacts" element={<ContactUser />} />
+              <Route element={<PrivateRoute />}>
+                <Route path="/contacts" element={<ContactUser />} />
+              </Route>
+              <Route path="*" element={<ErrorPage />} />
             </Route>
-            <Route path="*" element={<ErrorPage />} />
-          </Route>
-        </Routes>
+          </Routes>
+          <Toaster />
+        </BackgroundHome>
       )}
-      <Toaster />
-    </BackgroundHome>
+    </>
   );
 };
